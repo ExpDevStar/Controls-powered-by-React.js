@@ -14,7 +14,9 @@ var GenderSwitcher = React.createClass({
 //    console.log('target', value);
   },
   getInitialState: function () {
-    return {male: false, female: false};
+    var isMale = (this.props.gender == 'm') ? true : false,
+        isFemale = (this.props.gender == 'm') ? false : true;
+    return {male: isMale, female: isFemale};
   },
   render: function () {
     return (

@@ -10,8 +10,13 @@ var NameViews = React.createClass({
         });
     },
     render: function () {
+        var nameViews = this.props.data.map(function (person) {
+            return <NameView name={person.name} surname={person.surname} gender={person.gender} />
+        });
         return (
-            <div>Name Views</div>
+            <div className="nameViews">
+                {nameViews}
+            </div>
         );
     }
 });

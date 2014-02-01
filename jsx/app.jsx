@@ -16,7 +16,7 @@ var adultNames = [{
   surname: 'Pupkin',
   gender: 'm'
 }, {
-  name: 'Petya',
+  name: 'Mileena',
   surname: 'Pupkin',
   gender: 'f'
 }, {
@@ -52,10 +52,17 @@ var infantNames = [{
   surname: 'Cranston',
   gender: 'f'
 }];
-var nameViews = React.renderComponent(
-  <NameViews />,
-  document.querySelector('.jsNameViews')
+var adultViews = React.renderComponent(
+  <NameViews data={adultNames} />,
+  document.querySelector('.jsAdultViews')
 );
+
+
+var childViews = React.renderComponent(
+  <NameViews data={childNames} />,
+  document.querySelector('.jsChildViews')
+);
+
 
 var adultCounter = React.renderComponent(
   <Counter limit="10" count={adultNames.length} />,
@@ -72,7 +79,7 @@ var infantCounter = React.renderComponent(
 );
 adultCounter.on('counter:update', function (count) {
   console.log('counter update');
-  nameViews.trigger('update:count', count);
+  adultViews.trigger('update:count', count);
   infantCounter.trigger('update:limit', count);
 });
 //extend(commentBox, Events)

@@ -11,8 +11,9 @@ var Counter = React.createClass({
     return stateObject;
   },
   getInnerState: function (count, limit) {
-    var localLimit = limit || this.state.limit || 0;
-    var localCount = count || this.state.count || 0;
+    var localLimit = (limit === 0) ? limit : (limit || this.state.limit || 0);
+
+    var localCount = (count === 0) ? count : (count || this.state.count || 0);
     localCount = (localLimit < localCount) ? localLimit: localCount;
     return {
       limit: localLimit,
@@ -54,8 +55,10 @@ var Counter = React.createClass({
   },
 
   changer: function (e) {
-    var value = e.target.value;
-    this.setState({count: value});
+    var value = +(e.target.value);
+    console.log('value', value);
+    var stateObject = this.getInnerState(value, null);
+    this.setState({count: stateObject.count});
   },
   render: function() {
     return (
