@@ -6,10 +6,6 @@ var commentBox = React.renderComponent(
   document.getElementById('content')
 );
 
-var genderSwitcher = React.renderComponent(
-  <GenderSwitcher />,
-  document.querySelector('.jsGenderSwitcher')
-);
 
 var adultNames = [{
   name: 'Vasya',
@@ -58,11 +54,11 @@ var adultViews = React.renderComponent(
 );
 
 
-var childViews = React.renderComponent(
+/*var childViews = React.renderComponent(
   <NameViews data={childNames} />,
   document.querySelector('.jsChildViews')
 );
-
+*/
 
 var adultCounter = React.renderComponent(
   <Counter limit="10" count={adultNames.length} />,
