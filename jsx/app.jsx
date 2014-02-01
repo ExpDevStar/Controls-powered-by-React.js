@@ -54,11 +54,16 @@ var adultViews = React.renderComponent(
 );
 
 
-/*var childViews = React.renderComponent(
+var childViews = React.renderComponent(
   <NameViews data={childNames} />,
   document.querySelector('.jsChildViews')
 );
-*/
+
+var infantViews = React.renderComponent(
+  <NameViews data={infantNames} />,
+  document.querySelector('.jsInfantViews')
+);
+
 
 var adultCounter = React.renderComponent(
   <Counter limit="10" count={adultNames.length} />,
@@ -74,9 +79,14 @@ var infantCounter = React.renderComponent(
   document.querySelector('.jsInfantCounter')
 );
 adultCounter.on('counter:update', function (count) {
-  console.log('counter update');
   adultViews.trigger('update:count', count);
   infantCounter.trigger('update:limit', count);
+});
+childCounter.on('counter:update', function (count) {
+  childViews.trigger('update:count', count);
+});
+infantCounter.on('counter:update', function (count) {
+  infantViews.trigger('update:count', count);
 });
 //extend(commentBox, Events)
 commentBox.on('sho', function () {

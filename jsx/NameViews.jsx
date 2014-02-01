@@ -25,7 +25,7 @@ var NameViews = React.createClass({
                     personList.push(emptyPerson);
                 }
             } else if (lengthDiff < 0) {
-                personList = personList.slice(lengthDiff - personLength);
+                personList.splice(lengthDiff, personLength);
             } else {
 
             }
