@@ -1,0 +1,29 @@
+{
+  "name": "Reactor-test",
+  "version": "0.0.1",
+  "description": "Reactor test project",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Aetet/Reactor.git"
+  },
+  "keywords": [
+    "reactjs",
+    "test"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aetet/Reactor/issues"
+  },
+  "homepage": "https://github.com/Aetet/Reactor",
+  "devDependencies": {
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt": "~0.4.2",
+    "grunt-cli": "~0.1.13",
+    "grunt-contrib-connect": "~0.6.0"
+  }
+}
