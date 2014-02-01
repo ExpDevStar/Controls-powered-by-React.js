@@ -71,7 +71,9 @@ var infantCounter = React.renderComponent(
   document.querySelector('.jsInfantCounter')
 );
 adultCounter.on('counter:update', function (count) {
+  console.log('counter update');
   nameViews.trigger('update:count', count);
+  infantCounter.trigger('update:limit', count);
 });
 //extend(commentBox, Events)
 commentBox.on('sho', function () {

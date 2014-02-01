@@ -4,36 +4,32 @@
 var Counter = React.createClass({
   mixins: [Events],
   getInitialState: function () {
-
-    var limit = this.props.limit,
-        count = this.props.count;
-    count = (limit < count) ? limit: count;
-    return {
-        limit: limit,
-        count: count
-    };
+    var stateObject,
+        count = this.props.count,
+        limit = this.props.limit;
+    stateObject = this.getInnerState(count, limit);
+    return stateObject;
   },
-  updateLimit: function (count, limit) {
-    var localLimit = limit || this.props.limit;
-    var localCount = count || this.props.count;
+  getInnerState: function (count, limit) {
+    var localLimit = limit || this.state.limit || 0;
+    var localCount = count || this.state.count || 0;
     localCount = (localLimit < localCount) ? localLimit: localCount;
     return {
-        limit: localLimit,
-        count: localCount
+      limit: localLimit,
+      count: localCount
     };
   },
   componentWillMount: function () {
-    this.on('new:limit', function (limit) {
-      count = (limit < count) ? limit: count;
-      this.setState({
-        count: count,
-        limit: limit
-      });
+    var self = this;
+    self.on('update:limit', function (limit) {
+      var stateObject = self.getInnerState(null, limit);
+
+      this.setState(stateObject);
     });
   },
   componentDidUpdate: function () {
     this.trigger('counter:update', this.state.count);
-    this.trigger('limit:update', this.state.limit);
+//    this.trigger('limit:update', this.state.limit);
  //   console.log('arguments', arguments, this.state.count)
   },
   componentWillUnmount: function () {
